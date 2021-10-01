@@ -1,14 +1,9 @@
 function getRandomInt(min, max) {
-  if (min > 0 && max > 0) {
-    if (min < max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    else {
-      return 'Значение Min должно быть меньше, чем Max.';
-    }
+  if (min > 0 && max > 0 && min < max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   else {
-    return 'Значения Min и Max могут быть только положительными.';
+    return -1;
   }
 }
 
