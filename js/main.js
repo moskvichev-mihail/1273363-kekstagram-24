@@ -1,4 +1,4 @@
-const POST_AUTHOR = [
+const POST_AUTHORS = [
   'Иван',
   'Артем',
   'Мария',
@@ -12,7 +12,7 @@ const POST_AUTHOR = [
   'Виктория',
 ];
 
-const POST_MESSAGE = [
+const POST_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -45,8 +45,8 @@ const getRandomCommentsCount = () => getRandomInt(1, 5);
 const createComment = (index) => ({
   id: index + 1,
   avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
-  message: getRandomArrayElement(POST_MESSAGE),
-  name: getRandomArrayElement(POST_AUTHOR),
+  message: getRandomArrayElement(POST_MESSAGES),
+  name: getRandomArrayElement(POST_AUTHORS),
 });
 
 const createComments = () => new Array(getRandomCommentsCount()).fill(null).map((_, index) => createComment(index));
