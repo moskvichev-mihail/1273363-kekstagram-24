@@ -41,12 +41,12 @@ const createComments = () => new Array(getRandomCommentsCount()).fill(null).map(
 
 const createPost = (index) => ({
   id: index + 1,
-  url: `photos/${index}.jpg`,
+  url: `photos/${index + 1}.jpg`,
   description: POST_DESCRIPTION + index,
   likes: getRandomInt(15, 200),
   comments: createComments(),
 });
 
-const posts = new Array(POST_COUNT).fill(null).map((_, index) => createPost(index));
+const createPosts = new Array(POST_COUNT).fill(null).map((_, index) => createPost(index));
 
-export {posts};
+export {createPosts};
