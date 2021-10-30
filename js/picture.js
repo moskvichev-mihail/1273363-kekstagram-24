@@ -1,19 +1,24 @@
-import {modal} from './modal.js';
+import {pictureModal} from './picture-modal.js';
 
-const addPictureClickHandler = (element, posts) => {
-  element.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    if (evt.target.classList.contains('picture__img')) {
-      const pictureIndex = evt.target.parentElement.dataset.index;
-      modal.open(posts[pictureIndex]);
+const onPicturesClick = (element, posts) => {
+  element.addEventListener('click', (e) => {
+    if (e.target.classList.contains('picture__img')) {
+      e.preventDefault();
+      const pictureIndex = e.target.parentElement.dataset.index;
+      pictureModal.create(posts[pictureIndex]);
     }
   });
 };
 
+const removePictures = (container) => {
+  const elements = container.querySelectorAll('.picture');
+  elements.forEach((element) => {
+    container.removeChild(element);
+  });
+};
+
 const renderPictures = (posts) => {
-  const pictureTemplate = document.querySelector('#picture')
-    .content
-    .querySelector('.picture');
+  const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
   const pictureListElement = document.querySelector('.pictures');
   const listFragment = document.createDocumentFragment();
 
@@ -26,8 +31,9 @@ const renderPictures = (posts) => {
     listFragment.appendChild(pictureElement);
   });
 
+  removePictures(pictureListElement);
   pictureListElement.appendChild(listFragment);
-  addPictureClickHandler(pictureListElement, posts);
+  onPicturesClick(pictureListElement, posts);
 };
 
 export {renderPictures};
