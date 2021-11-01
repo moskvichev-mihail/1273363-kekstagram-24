@@ -1,26 +1,24 @@
 import {pictureModal} from './picture-modal.js';
 
-const onPicturesClick = (element, posts) => {
-  element.addEventListener('click', (e) => {
+const renderPictures = (posts, isFirstRendering = false) => {
+  const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+  const pictureListElement = document.querySelector('.pictures');
+  const listFragment = document.createDocumentFragment();
+
+  const onPicturesClick = (e) => {
     if (e.target.classList.contains('picture__img')) {
       e.preventDefault();
       const pictureIndex = e.target.parentElement.dataset.index;
       pictureModal.create(posts[pictureIndex]);
     }
-  });
-};
+  };
 
-const removePictures = (container) => {
-  const elements = container.querySelectorAll('.picture');
-  elements.forEach((element) => {
-    container.removeChild(element);
-  });
-};
-
-const renderPictures = (posts) => {
-  const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-  const pictureListElement = document.querySelector('.pictures');
-  const listFragment = document.createDocumentFragment();
+  const removePictures = (container) => {
+    const elements = container.querySelectorAll('.picture');
+    elements.forEach((element) => {
+      container.removeChild(element);
+    });
+  };
 
   posts.forEach((post, index) => {
     const pictureElement = pictureTemplate.cloneNode(true);
@@ -31,9 +29,11 @@ const renderPictures = (posts) => {
     listFragment.appendChild(pictureElement);
   });
 
+  if (isFirstRendering) {
+    pictureListElement.addEventListener('click', onPicturesClick);
+  }
   removePictures(pictureListElement);
   pictureListElement.appendChild(listFragment);
-  onPicturesClick(pictureListElement, posts);
 };
 
 export {renderPictures};

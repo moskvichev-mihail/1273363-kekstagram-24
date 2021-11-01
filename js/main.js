@@ -6,7 +6,7 @@ import {filter} from './filter.js';
 
 getData(
   (posts) => {
-    renderPictures(posts);
+    renderPictures(posts, true);
     filter.show(posts);
   },
   (err) => {
