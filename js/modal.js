@@ -3,8 +3,6 @@ import {keyboard} from './util.js';
 const modal = {};
 
 modal.init = function (element, target = false, callBack = () => {}) {
-  const OnCloseEvent = () => callBack();
-
   const onDocumentKeydown = (e) => {
     keyboard.isEsc(e, this.close);
   };
@@ -30,7 +28,7 @@ modal.init = function (element, target = false, callBack = () => {}) {
     document.body.classList.remove('modal-open');
     this.closeButton.removeEventListener('click', onCloseButtonClick);
     document.removeEventListener('keydown', onDocumentKeydown);
-    OnCloseEvent();
+    callBack();
   };
 };
 

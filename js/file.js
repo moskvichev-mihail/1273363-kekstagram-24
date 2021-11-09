@@ -9,7 +9,7 @@ const file = {
 
 file.isImg = () => FILE_TYPES.some((it) => file.name.endsWith(it));
 
-file.onUpload = () => {
+file.init = () => {
   const onFileUploadChange = (e) => {
     e.preventDefault();
     file.value = file.element.files[0];

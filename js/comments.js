@@ -4,7 +4,7 @@ const COMMENTS_LOAD_COUNT = 5;
 
 const comments = {
   element: document.querySelector('.social__comments'),
-  template: null,
+  template: document.querySelector('.social__comment'),
   items: [],
   temp: [],
   totalCount: 0,
@@ -12,8 +12,6 @@ const comments = {
   loadedCountElement: document.querySelector('.social__comment-count'),
   loadMoreButton: document.querySelector('.social__comments-loader'),
 };
-
-comments.getElementTemplate = () => comments.element.querySelector('.social__comment');
 
 comments.createItemTemplate = function (item) {
   const socialCommentElement = this.template.cloneNode(true);
@@ -66,12 +64,7 @@ const onLoadMoreButtonClick = () => {
   comments.load();
 };
 
-const onLoadMoreButtonKeydown = (e) => {
-  keyboard.isEnter(e, comments.load());
-};
-
 comments.create = function (arrayComments = []) {
-  this.template = this.getElementTemplate();
   this.items = arrayComments;
   this.temp = arrayComments.slice(0);
   this.totalCount = arrayComments.length;
@@ -79,7 +72,6 @@ comments.create = function (arrayComments = []) {
   this.element.innerHTML = '';
   this.load();
   this.loadMoreButton.addEventListener('click', onLoadMoreButtonClick);
-  this.loadMoreButton.addEventListener('keydown', onLoadMoreButtonKeydown);
 };
 
 export {comments};

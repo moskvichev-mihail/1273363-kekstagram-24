@@ -1,8 +1,9 @@
 import {pictureModal} from './picture-modal.js';
 
+const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const pictureListElement = document.querySelector('.pictures');
+
 const renderPictures = (posts, isFirstRendering = false) => {
-  const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-  const pictureListElement = document.querySelector('.pictures');
   const listFragment = document.createDocumentFragment();
 
   const onPicturesClick = (e) => {

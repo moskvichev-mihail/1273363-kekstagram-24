@@ -6,7 +6,7 @@ const preview = {
   img: null,
   scale: scale,
   effect: effect,
-  class: false,
+  className: false,
 };
 
 const onScaleControlClick = (e) => {
@@ -56,12 +56,12 @@ preview.renderEffectClass = function () {
 
 preview.setEffectClass = function (className) {
   this.resetEffectClass();
-  this.class = className;
+  this.className = className;
   this.element.classList.add(className);
 };
 
 preview.resetEffectClass = function () {
-  this.class && this.element.classList.remove(this.class);
+  this.className && this.element.classList.remove(this.className);
 };
 
 preview.removeEffect = function () {

@@ -13,4 +13,4 @@ getData(
     message.render(false, err, 'Закрыть');
   });
 
-file.onUpload();
+file.init();

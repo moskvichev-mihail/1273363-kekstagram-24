@@ -3,9 +3,7 @@ import {comments} from './comments.js';
 
 const pictureModal = {...modal};
 
-const onClosePictureModal = () => false;
-
-pictureModal.init(document.querySelector('.big-picture'), false, onClosePictureModal);
+pictureModal.init(document.querySelector('.big-picture'), false);
 
 pictureModal.create = function (picture) {
   const modalImg = this.element.querySelector('img');

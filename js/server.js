@@ -33,7 +33,7 @@ const sendData = (data, onSuccess, onError) => {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      data,
+      body: data,
     },
   )
     .then((response) => {
