@@ -1,5 +1,3 @@
-import {keyboard} from './util.js';
-
 const COMMENTS_LOAD_COUNT = 5;
 
 const comments = {
