@@ -28,11 +28,6 @@ const sendData = (data, onSuccess, onError) => {
     SERVER_URL,
     {
       method: 'POST',
-      mode: 'no-cors',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
       body: data,
     },
   )

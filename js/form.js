@@ -16,13 +16,13 @@ const form = {
 const onSubmitForm = function(e) {
   e.preventDefault();
 
-  closeUploadFileModal();
-
   sendData(
     new FormData(e.target),
     () => message.render(true),
     () => message.render(false),
   );
+
+  closeUploadFileModal();
 };
 
 form.close = () => {
